@@ -6,13 +6,14 @@ const SearchHeaer = () => {
     const navigate = useNavigate();
     let { keyword } = useParams();
     const [text, setText] = useState("");
-    const handleChange = (e) => {
-        setText(e.target.value);
-    };
+    // const handleChange = (e) => {
+    //     setText(e.target.value);
+    // };
     const handleSubmit = (e) => {
         e.preventDefault();
         navigate(`/books/${text}`);
     };
+    console.log(keyword);
     useEffect(() => setText(keyword || ""), [keyword]);
 
     return (
@@ -27,7 +28,7 @@ const SearchHeaer = () => {
                         placeholder="검색어를 입력하세요"
                         value={text}
                         className="w-11/12 border border-blue-500 rounded-full outline-blue-500 pl-2"
-                        onChange={handleChange}
+                        onChange={(e) => setText(e.target.value)}
                     />
                     <button className="absolute top-1.5 right-12   text-blue-500">
                         <FaSearch />

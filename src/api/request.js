@@ -1,7 +1,7 @@
 const requests = {
-    fetchSong: "/song.json",
-    fetchMember: "/member.json",
     fetchBest: "/api/best",
+    fetchSearch: "/api/search/title",
+    fetchDetail: "/api/detail",
 };
 
 export default requests;

@@ -64,7 +64,7 @@ export const BookDetail = () => {
         </div>
         <div className="w-3/6 my-10">
           <img
-            src={detailList.image}
+            src={`http://192.168.0.193:8989/images/${book.image}`}
             alt={book.title}
             className="w-full"
             style={{ boxShadow: "0 20px 60px rgb(0 0 0 / 12%)" }}

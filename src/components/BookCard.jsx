@@ -1,5 +1,5 @@
 import React from "react";
-const BookCard = () => {
+const BookCard = ({ book }) => {
     return (
         <li className="flex justify-start border-b py-11 px-11 ">
             <div>
@@ -7,12 +7,8 @@ const BookCard = () => {
             </div>
             <div className="ml-7 w-full">
                 <div>
-                    <p className="font-bold text-2xl mb-1">
-                        모던 자바스크립트 Deep Dive
-                    </p>
-                    <p className="text-subTitle text-lg mb-3">
-                        자바스크립트의 기본 개념과 동작 원리
-                    </p>
+                    {/* <p className="font-bold text-2xl mb-1">{books.title}</p> */}
+                    <p className="text-subTitle text-lg mb-3">{book.title}</p>
                     <span>이웅모</span>
                     <span className="text-publisher ml-3">위키북스</span>
                 </div>

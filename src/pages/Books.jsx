@@ -8,30 +8,33 @@ import Paging from "../components/Paging";
 const Books = () => {
     const { keyword } = useParams();
     const [books, setBooks] = useState([]);
-    const [page, setPage] = useState(1);
+    const [page, setPage] = useState(0);
 
     const fetchDate = async () => {
-        const parmas = {
-            page,
-        };
-        const search = {
-            keyword: keyword,
+        const params = {
             page: page,
         };
-        const resultBest =
-            keyword == undefined
-                ? await instance.get(requests.fetchBest, { parmas })
-                : await instance.get(requests.fetchSearch, {
-                      keyword: "가",
-                      page: 0,
-                  });
-
+        const resultBest = await instance.get(requests.fetchBest, { params });
         setBooks(resultBest.data.list);
     };
 
-    useEffect(() => {
-        fetchDate();
-    }, [keyword]);
+    const pageNext = () => {
+        setPage(page + 1);
+    };
+    const pagePrev = () => {
+        setPage(page - 1);
+    };
+
+    const changePage = (_page) => {
+        if (page !== _page) {
+            setPage(_page);
+            console.log("페이지바뀌어라", page);
+        }
+    };
+
+    // useEffect(() => {
+    //     fetchDate();
+    // }, [keyword]);
 
     useEffect(() => {
         fetchDate();
@@ -45,9 +48,21 @@ const Books = () => {
                     <BookCard key={book.seq} book={book} />
                 ))}
             </ul>
-            <Paging />
+            <Paging pageNext={pageNext} pagePrev={pagePrev} changePage={changePage} page={page} />
         </>
     );
 };
 
 export default Books;
+
+// const search = {
+//     keyword: keyword,
+//     page: page,
+// };
+// const resultBest =
+//     keyword == undefined
+//         ? await instance.get(requests.fetchBest, { parmas })
+//         : await instance.get(requests.fetchSearch, {
+//               keyword: "가",
+//               page: 0,
+//           });

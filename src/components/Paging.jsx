@@ -1,15 +1,18 @@
 import React, { useState } from "react";
 import "./Paging.css";
 import Pagination from "react-js-pagination";
-const Paging = () => {
-    const [page, setPage] = useState(1);
-    const handlePageChange = (page) => {
-        setPage(page);
+const Paging = (props) => {
+    // console.log(props.page);
+    const [focusPage, setPage] = useState(1);
+    const handlePageChange = (focusPage) => {
+        setPage(focusPage);
+        props.changePage(focusPage - 1);
+        // console.log(focusPage);
     };
     return (
         <Pagination
             // 현재 페이지
-            activePage={page}
+            activePage={focusPage}
             // 한 페이지당 보여줄 리스트 아이템의 개수
             itemsCountPerPage={8}
             // 총 아이템의 개수

@@ -1,7 +1,14 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 const BookCard = ({ book }) => {
+    const navigate = useNavigate();
     return (
-        <li className="flex justify-start border-b py-11 px-11 ">
+        <li
+            onClick={() => {
+                navigate(`/books/detail/${book.seq}`, { state: { book } });
+            }}
+            className="flex justify-start border-b py-11 px-11 "
+        >
             <div>
                 <img className=" w-36 h-44" src="" />
             </div>

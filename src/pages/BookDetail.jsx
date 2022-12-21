@@ -1,6 +1,11 @@
 import React from "react";
 import { SlArrowRight } from "react-icons/sl";
+import { useLocation } from "react-router-dom";
 export const BookDetail = () => {
+    const {
+        state: { book },
+    } = useLocation();
+    console.log(book);
     return (
         <div className="w-full max-w-3xl mx-auto px-6 font-medium tracking-tighter">
             <p className="text-xs flex text-gray">
@@ -9,7 +14,7 @@ export const BookDetail = () => {
             </p>
             <div className="flex flex-col items-center">
                 <div className="text-center mt-8">
-                    <h2 className="text-3xl">모던 자바스크립트 Deep Dive</h2>
+                    <h2 className="text-3xl">{book.title}</h2>
                     <p className="text-subTitle text-base font-thin mt-4">
                         자바스크립트의 기본 개념과 동작 원리
                     </p>

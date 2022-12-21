@@ -18,7 +18,7 @@ const SearchHeaer = () => {
 
     return (
         <header className="flex flex-col items-center py-6 border-b">
-            <Link to="/">
+            <Link to="/books">
                 <img src="/image/kyoboLogo.png" alt="교보문고 로고" />
             </Link>
             <div className="relative w-full text-center mt-6">

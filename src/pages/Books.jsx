@@ -14,7 +14,17 @@ const Books = () => {
         const params = {
             page: page,
         };
-        const resultBest = await instance.get(requests.fetchBest, { params });
+        const search = {
+            keyword: keyword,
+            page: page,
+        };
+        const resultBest =
+            keyword == undefined
+                ? await instance.get(requests.fetchBest, { params })
+                : await instance.get(requests.fetchSearch, {
+                      keyword: "가",
+                      page: 0,
+                  });
         setBooks(resultBest.data.list);
     };
 
@@ -32,9 +42,9 @@ const Books = () => {
         }
     };
 
-    // useEffect(() => {
-    //     fetchDate();
-    // }, [keyword]);
+    useEffect(() => {
+        fetchDate();
+    }, [keyword]);
 
     useEffect(() => {
         fetchDate();
@@ -55,10 +65,6 @@ const Books = () => {
 
 export default Books;
 
-// const search = {
-//     keyword: keyword,
-//     page: page,
-// };
 // const resultBest =
 //     keyword == undefined
 //         ? await instance.get(requests.fetchBest, { parmas })

@@ -3,6 +3,7 @@ import "./App.css";
 import Header from "./components/Header";
 import BookDetail from "./pages/BookDetail";
 import Books from "./pages/Books";
+import Home from "./pages/Home";
 import NotFound from "./pages/NotFound";
 
 function App() {
@@ -11,7 +12,6 @@ function App() {
             <div>
                 <Header />
                 <Routes>
-                    <Route></Route>
                     <Route path="/" element={<Books />} />
                     <Route path="/books" element={<Books />} />
                     <Route path="/books/:keyword" element={<Books />} />

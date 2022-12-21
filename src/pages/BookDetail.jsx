@@ -29,8 +29,8 @@ export const BookDetail = () => {
     window.scrollTo(0, 0);
   }, []);
   const year = new Date(detailList.publishdate).getFullYear();
-  const month = new Date(detailList.publishdate).getMonth();
-  const day = new Date(detailList.publishdate).getDate();
+  const month = new Date(detailList.publishdate).getMonth() + 1;
+  const day = new Date(detailList.publishdate).getDate() - 1;
   const fullDate = `${year}년 ${month}월 ${day}일`;
   const price = detailList.price
     ? detailList.price

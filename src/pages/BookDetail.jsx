@@ -26,6 +26,7 @@ export const BookDetail = () => {
 
   useEffect(() => {
     fetchDate();
+    window.scrollTo(0, 0);
   }, []);
   const year = new Date(detailList.publishdate).getFullYear();
   const month = new Date(detailList.publishdate).getMonth();
@@ -59,10 +60,10 @@ export const BookDetail = () => {
         <div className="text-center mt-8">
           <h2 className="text-3xl">{book.title}</h2>
           <p className="text-subTitle text-base font-thin mt-4">
-            {book.sub || "No SubTitle"}
+            {book.sub || ""}
           </p>
         </div>
-        <div className="w-3/6 my-10">
+        <div className="w-6/12 my-10">
           <img
             src={`http://192.168.0.193:8989/images/${book.image}`}
             alt={book.title}
@@ -73,7 +74,7 @@ export const BookDetail = () => {
         <div className="w-full">
           <div className="flex justify-between">
             <span>{book.writer} 저자(글)</span>
-            <span className="text-publisher line-through text-sm">
+            <span className="text-publisher line-through text-base">
               {salePrice}원
             </span>
           </div>
@@ -92,7 +93,7 @@ export const BookDetail = () => {
             </span>
           </div>
         </div>
-        <div className="w-full bg-summary rounded-2xl py-8 px-8 mt-6 mb-10 tracking-tighter mi">
+        <div className="w-full bg-summary rounded-2xl py-8 px-8 mt-8 mb-10 tracking-tighter mi">
           <h1 className="text-2xl font-bold pb-5 border-b border-lightgray">
             책 소개
           </h1>

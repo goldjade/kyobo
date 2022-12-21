@@ -3,7 +3,6 @@ import "./App.css";
 import Header from "./components/Header";
 import BookDetail from "./pages/BookDetail";
 import Books from "./pages/Books";
-import Home from "./pages/Home";
 import NotFound from "./pages/NotFound";
 
 function App() {

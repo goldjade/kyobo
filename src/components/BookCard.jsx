@@ -6,7 +6,7 @@ const BookCard = ({ book }) => {
         return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     }
     return (
-        <lig
+        <li
             onClick={() => {
                 navigate(`/books/detail/${book.seq}`, { state: { book } });
             }}
@@ -14,12 +14,16 @@ const BookCard = ({ book }) => {
             style={{ borderBottom: "1px solid #F4F4F4" }}
         >
             <div>
-                <img className=" w-36 h-44" src={book.image} alt="책이미지" />
+                <img
+                    className=" w-36 h-44"
+                    src={`http://192.168.0.193:8989/images/${book.image}`}
+                    alt="책이미지"
+                />
             </div>
             <div className="ml-7 w-full">
                 <div>
                     <p className="font-bold text-2xl mb-1">{book.title}</p>
-                    <p className="text-subTitle text-lg mb-3">{book.subTitle}</p>
+                    <p className="text-subTitle text-lg mb-3">{book.sub}</p>
                     <span>{book.writer}</span>
                     <span className="text-publisher ml-3">{book.publisher}</span>
                 </div>
@@ -40,7 +44,7 @@ const BookCard = ({ book }) => {
                     </p>
                 </div>
             </div>
-        </lig>
+        </li>
     );
 };
 export default BookCard;

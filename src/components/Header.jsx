@@ -6,18 +6,14 @@ const SearchHeaer = () => {
     const navigate = useNavigate();
     let { keyword } = useParams();
     const [text, setText] = useState("");
-    // const handleChange = (e) => {
-    //     setText(e.target.value);
-    // };
     const handleSubmit = (e) => {
         e.preventDefault();
         navigate(`/books/${text}`);
     };
-    console.log(keyword);
     useEffect(() => setText(keyword || ""), [keyword]);
 
     return (
-        <header className="flex flex-col items-center py-6 border-b">
+        <header className="flex flex-col items-center py-6 border-b  border-blue-500">
             <Link to="/books">
                 <img src="/image/kyoboLogo.png" alt="교보문고 로고" />
             </Link>

@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import instance from "../api/axios";
@@ -18,12 +19,12 @@ const Books = () => {
             keyword: keyword,
             page: page,
         };
+
         const resultBest =
             keyword == undefined
                 ? await instance.get(requests.fetchBest, { params })
-                : await instance.get(requests.fetchSearch, {
-                      keyword: "가",
-                      page: 0,
+                : await axios.get("http://192.168.0.193:8989/api/search/title", {
+                      params: { keyword: keyword, page: page },
                   });
         setBooks(resultBest.data.list);
     };
@@ -38,7 +39,6 @@ const Books = () => {
     const changePage = (_page) => {
         if (page !== _page) {
             setPage(_page);
-            console.log("페이지바뀌어라", page);
         }
     };
 
@@ -50,7 +50,6 @@ const Books = () => {
         fetchDate();
     }, [page]);
 
-    console.log("books", keyword);
     return (
         <>
             <ul>
@@ -64,11 +63,3 @@ const Books = () => {
 };
 
 export default Books;
-
-// const resultBest =
-//     keyword == undefined
-//         ? await instance.get(requests.fetchBest, { parmas })
-//         : await instance.get(requests.fetchSearch, {
-//               keyword: "가",
-//               page: 0,
-//           });
